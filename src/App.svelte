@@ -8,7 +8,7 @@
 
 <input class="ageInput" type="number" id="age" bind:value={age} on:input{ageSubmit} />
 {#if age >= 18}
-	<p class="messagGGe">You're adult</p>
+	<p class="message">You're adult</p>
 {:else}
 	<p class="message">You're young</p>
 {/if}
