@@ -19,6 +19,7 @@
 		height: 30px;
 		padding: 10px;
 		text-align: center;
+		color: blue;
 	}
 	.message{
 		color: red;
