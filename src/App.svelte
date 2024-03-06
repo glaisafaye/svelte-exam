@@ -1,16 +1,22 @@
 <script>
 	let age = 0;
+	let ageSubmitted = false;
 
 	const ageSubmit = (e) => {
 		age = e.target.value;
+		ageSubmitted = true;
 	};
 </script>
 
-<input class="ageInput" type="number" id="age" bind:value={age} on:input{ageSubmit} />
-{#if age >= 18}
-	<p class="message">You're adult</p>
-{:else}
-	<p class="message">You're young</p>
+<label for="text">Type your age:</label>
+<input class="ageInput" type="number" id="age" bind:value={age} on:input={ageSubmit} />
+
+{#if ageSubmitted}
+	{#if age >= 18}
+		<p class="message">You're an adult</p>
+	{:else}
+		<p class="message">You're young</p>
+	{/if}
 {/if}
 
 <style>
@@ -21,7 +27,7 @@
 		text-align: center;
 		color: blue;
 	}
-	.message{
+	.message {
 		color: red;
 	}
 </style>
