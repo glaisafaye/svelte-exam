@@ -4,43 +4,30 @@
 
 	const ageSubmit = (e) => {
 		age = e.target.value;
-		ageSubmitted = true;
+		ageSubmitted = age !== "";
 	};
 </script>
 
-<div class="container">
-	<label class="typeAge" for="text">Type your age:</label>
-	<input class="ageInput" type="number" id="age" bind:value={age} on:input={ageSubmit} />
-
-	{#if ageSubmitted}
-		{#if age >= 18}
-			<p class="message">You're an adult</p>
-		{:else}
-			<p class="message">You're young</p>
-		{/if}
-	{/if}
-</div>
-
 <style>
 	.container {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-	}
-
-	.ageInput {
-		width: 100px;
-		height: 30px;
-		padding: 10px;
-		text-align: center;
-		color: blue;
-	}
-
-	.message {
-		color: red;
-	}
-
-	.typeAge {
-		margin-bottom: 5px;
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
 	}
 </style>
+
+<div class="relative h-screen">
+	<div class="container mx-auto flex flex-col items-center">
+		<!-- svelte-ignore a11y-label-has-associated-control -->
+		<label class="text-gray-700 font-bold mb-2 transition">Type your age:</label>
+		<input type="number" placeholder="Type here" class="input input-bordered w-full max-w-xs p-4 transition" id="age" bind:value={age} on:input={ageSubmit} />
+		{#if ageSubmitted}
+			{#if age >= 18}
+				<p class="text-lg text-green-500 transition mt-2">You're an adult</p>
+			{:else}
+				<p class="text-lg text-red-500 transition mt-2">You're young</p>
+			{/if}
+		{/if}
+	</div>
+</div>
